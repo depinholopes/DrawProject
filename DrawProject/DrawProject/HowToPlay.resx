@@ -117,4 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Description_TxtBox.Text" xml:space="preserve">
+    <value>DrawProject est un jeu multijoueur qui combine le dessin et le jeu de devinettes. Les joueurs se rejoignent dans un lobby en ligne, choisissent un pseudonyme, puis à tour de rôle, chaque joueur est désigné comme le "dessinateur".
+
+Pendant que le dessinateur dessine, les autres joueurs tentent de deviner le mot en saisissant leurs réponses dans un chat en ligne. Les points sont attribués en fonction de la rapidité et de la précision des devinettes. Le dessinateur gagne des points s'il est bien deviné, tout comme les joueurs qui trouvent rapidement la réponse.
+
+Après le temps imparti, le tour se termine. Les rôles de dessinateur passent au joueur suivant, et le processus se répète. Le jeu continue avec plusieurs tours, et les scores sont accumulés. Le joueur avec le plus de points à la fin du jeu est déclaré gagnant.
+
+L'aspect social du jeu, la diversité des mots proposés, et le défi de dessiner rapidement contribuent à rendre DrawProject amusant et divertissant pour les joueurs de tous âges.</value>
+  </data>
+  <data name="HowToPlay_TxtBox.Text" xml:space="preserve">
+    <value>Rejoignez une Salle : Vous avez généralement la possibilité de créer une nouvelle salle ou de rejoindre une salle existante. Si vous créez une nouvelle salle, vous obtiendrez un code de salle que vous pouvez partager avec vos amis pour qu'ils vous rejoignent.
+
+Début du Jeu : Une fois que tous les joueurs sont prêts, le jeu commence. Les joueurs seront attribués à tour de rôle en tant que dessinateurs.
+
+Dessinez : Utilisez les outils de dessin fournis pour représenter le mot que vous avez choisi. Les autres joueurs verront votre dessin en temps réel.
+
+Devinez le Mot : Pendant que le dessinateur dessine, les autres joueurs tentent de deviner le mot en saisissant leurs réponses dans le chat du jeu.
+
+Attribution des Points : Les points sont attribués en fonction de la rapidité et de la précision des devinettes. Le dessinateur gagne des points si le mot est bien deviné, et les joueurs qui trouvent rapidement la réponse gagnent également des points.
+
+Changement de Rôles : Après chaque tour, les rôles de dessinateur passent au joueur suivant, et le processus se répète.
+
+Fin du Jeu : Le jeu continue avec plusieurs tours. À la fin, le joueur avec le plus de points est déclaré gagnant.
+</value>
+  </data>
 </root>
