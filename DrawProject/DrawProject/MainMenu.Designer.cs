@@ -1,6 +1,6 @@
 ﻿namespace DrawProject
 {
-    partial class MainMenu_Box
+    partial class MainMenu_Frm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu_Box));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu_Frm));
             Play_Button = new Button();
             HowToPlay_Button = new Button();
             Quit_Button = new Button();
@@ -44,6 +44,7 @@
             Play_Button.TabIndex = 0;
             Play_Button.Text = "Play";
             Play_Button.UseVisualStyleBackColor = true;
+            Play_Button.Click += Play_Button_Click;
             // 
             // HowToPlay_Button
             // 
@@ -74,16 +75,19 @@
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
-            // MainMenu_Box
+            // MainMenu_Frm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(623, 529);
             Controls.Add(pictureBox1);
             Controls.Add(Quit_Button);
             Controls.Add(HowToPlay_Button);
             Controls.Add(Play_Button);
-            Name = "MainMenu_Box";
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Name = "MainMenu_Frm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "DrawProject";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
