@@ -30,10 +30,22 @@ namespace DrawProject
         }
         private void HowToPlay_Frm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Vous pouvez ajouter des opérations de nettoyage ici si nécessaire
-
-            // Par défaut, Application.Exit() fermera l'ensemble de l'application
-            Application.Exit();
-        }
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult result = MessageBox.Show("Do you really want to exit?", "Dialog Title", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }   
     }
 }

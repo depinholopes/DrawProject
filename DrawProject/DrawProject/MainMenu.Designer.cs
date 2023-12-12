@@ -38,7 +38,7 @@
             // 
             // Play_Button
             // 
-            Play_Button.Location = new Point(224, 272);
+            Play_Button.Location = new Point(872, 325);
             Play_Button.Name = "Play_Button";
             Play_Button.Size = new Size(180, 71);
             Play_Button.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             // HowToPlay_Button
             // 
-            HowToPlay_Button.Location = new Point(224, 349);
+            HowToPlay_Button.Location = new Point(872, 402);
             HowToPlay_Button.Name = "HowToPlay_Button";
             HowToPlay_Button.Size = new Size(180, 71);
             HowToPlay_Button.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             // Quit_Button
             // 
-            Quit_Button.Location = new Point(224, 426);
+            Quit_Button.Location = new Point(872, 479);
             Quit_Button.Name = "Quit_Button";
             Quit_Button.Size = new Size(180, 71);
             Quit_Button.TabIndex = 2;
@@ -69,7 +69,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(190, 12);
+            pictureBox1.Location = new Point(838, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(251, 254);
             pictureBox1.TabIndex = 3;
@@ -80,7 +80,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(623, 529);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(pictureBox1);
             Controls.Add(Quit_Button);
             Controls.Add(HowToPlay_Button);
@@ -89,6 +89,7 @@
             Name = "MainMenu_Frm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DrawProject";
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }

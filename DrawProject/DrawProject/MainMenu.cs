@@ -5,6 +5,7 @@ namespace DrawProject
         public MainMenu_Frm()
         {
             InitializeComponent();
+
         }
 
         private void HowToPlay_Button_Click(object sender, EventArgs e)
