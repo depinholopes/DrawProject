@@ -34,9 +34,12 @@
             selectColor_btn = new Button();
             selectEraser_btn = new Button();
             reset_btn = new Button();
-            chat_txt = new TextBox();
             send_txt = new TextBox();
             colorDialog = new ColorDialog();
+            send_btn = new Button();
+            chat_lst = new ListBox();
+            sizeIncrease_btn = new Button();
+            sizeDecrease_btn = new Button();
             ((System.ComponentModel.ISupportInitialize)logo_ptr).BeginInit();
             ((System.ComponentModel.ISupportInitialize)drawing_ptr).BeginInit();
             SuspendLayout();
@@ -44,7 +47,7 @@
             // logo_ptr
             // 
             logo_ptr.Image = (Image)resources.GetObject("logo_ptr.Image");
-            logo_ptr.Location = new Point(783, 12);
+            logo_ptr.Location = new Point(872, 12);
             logo_ptr.Name = "logo_ptr";
             logo_ptr.Size = new Size(251, 254);
             logo_ptr.TabIndex = 4;
@@ -95,26 +98,60 @@
             reset_btn.UseVisualStyleBackColor = true;
             reset_btn.Click += reset_btn_Click;
             // 
-            // chat_txt
-            // 
-            chat_txt.BackColor = Color.White;
-            chat_txt.Location = new Point(12, 272);
-            chat_txt.Multiline = true;
-            chat_txt.Name = "chat_txt";
-            chat_txt.ReadOnly = true;
-            chat_txt.Size = new Size(346, 659);
-            chat_txt.TabIndex = 10;
-            // 
             // send_txt
             // 
             send_txt.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            send_txt.ForeColor = Color.Silver;
+            send_txt.ForeColor = Color.Black;
             send_txt.Location = new Point(12, 937);
             send_txt.Multiline = true;
             send_txt.Name = "send_txt";
-            send_txt.Size = new Size(346, 70);
+            send_txt.PlaceholderText = "text to send...";
+            send_txt.Size = new Size(250, 70);
             send_txt.TabIndex = 12;
-            send_txt.Text = "text to send...";
+            send_txt.KeyPress += send_txt_KeyPress;
+            // 
+            // send_btn
+            // 
+            send_btn.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            send_btn.Location = new Point(268, 937);
+            send_btn.Name = "send_btn";
+            send_btn.Size = new Size(90, 70);
+            send_btn.TabIndex = 13;
+            send_btn.Text = "Send";
+            send_btn.UseVisualStyleBackColor = true;
+            send_btn.Click += send_btn_Click;
+            // 
+            // chat_lst
+            // 
+            chat_lst.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            chat_lst.FormattingEnabled = true;
+            chat_lst.ItemHeight = 32;
+            chat_lst.Location = new Point(12, 272);
+            chat_lst.Name = "chat_lst";
+            chat_lst.Size = new Size(346, 644);
+            chat_lst.TabIndex = 15;
+            // 
+            // sizeIncrease_btn
+            // 
+            sizeIncrease_btn.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            sizeIncrease_btn.Location = new Point(1652, 436);
+            sizeIncrease_btn.Name = "sizeIncrease_btn";
+            sizeIncrease_btn.Size = new Size(124, 76);
+            sizeIncrease_btn.TabIndex = 17;
+            sizeIncrease_btn.Text = "+";
+            sizeIncrease_btn.UseVisualStyleBackColor = true;
+            sizeIncrease_btn.Click += sizeIncrease_btn_Click;
+            // 
+            // sizeDecrease_btn
+            // 
+            sizeDecrease_btn.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            sizeDecrease_btn.Location = new Point(1776, 436);
+            sizeDecrease_btn.Name = "sizeDecrease_btn";
+            sizeDecrease_btn.Size = new Size(124, 76);
+            sizeDecrease_btn.TabIndex = 18;
+            sizeDecrease_btn.Text = "-";
+            sizeDecrease_btn.UseVisualStyleBackColor = true;
+            sizeDecrease_btn.Click += sizeDecrease_btn_Click;
             // 
             // Game_Frm
             // 
@@ -122,8 +159,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1904, 1041);
+            Controls.Add(sizeDecrease_btn);
+            Controls.Add(sizeIncrease_btn);
+            Controls.Add(chat_lst);
+            Controls.Add(send_btn);
             Controls.Add(send_txt);
-            Controls.Add(chat_txt);
             Controls.Add(reset_btn);
             Controls.Add(selectEraser_btn);
             Controls.Add(selectColor_btn);
@@ -133,6 +173,7 @@
             Name = "Game_Frm";
             Text = "Game";
             WindowState = FormWindowState.Maximized;
+            FormClosing += Game_Frm_FormClosing;
             ((System.ComponentModel.ISupportInitialize)logo_ptr).EndInit();
             ((System.ComponentModel.ISupportInitialize)drawing_ptr).EndInit();
             ResumeLayout(false);
@@ -146,8 +187,11 @@
         private Button selectColor_btn;
         private Button selectEraser_btn;
         private Button reset_btn;
-        private TextBox chat_txt;
         private TextBox send_txt;
         private ColorDialog colorDialog;
+        private Button send_btn;
+        private ListBox chat_lst;
+        private Button sizeIncrease_btn;
+        private Button sizeDecrease_btn;
     }
 }
