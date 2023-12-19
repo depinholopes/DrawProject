@@ -1,55 +1,60 @@
 namespace DrawProject
 {
+    // The MainMenu_Frm class, representing the main menu form
     public partial class MainMenu_Frm : Form
     {
+        // Constructor for the MainMenu_Frm class
         public MainMenu_Frm()
         {
+            // Initialize the components, typically used to initialize the user interface components.
             InitializeComponent();
-
-            // Le constructeur de la classe, généralement utilisé pour initialiser les composants de l'interface utilisateur.
         }
 
+        // Event handler for the "HowToPlay" button click
         private void HowToPlay_Button_Click(object sender, EventArgs e)
         {
-            // Gestionnaire d'événements appelé lorsque le bouton "HowToPlay" est cliqué.
+            // Event handler called when the "HowToPlay" button is clicked.
 
-            // Créer une nouvelle instance du formulaire HowToPlay_Frm
+            // Create a new instance of the HowToPlay_Frm form
             HowToPlay_Frm howToPlay = new HowToPlay_Frm();
 
-            // Afficher le formulaire HowToPlay_Frm
+            // Show the HowToPlay_Frm form
             howToPlay.Show();
 
-            // Masquer le formulaire MainMenu_Frm actuel
+            // Hide the current MainMenu_Frm form
             this.Hide();
         }
 
+        // Event handler for the "Quit" button click
         private void Quit_Button_Click(object sender, EventArgs e)
         {
-            // Gestionnaire d'événements appelé lorsque le bouton "Quit" est cliqué.
+            // Event handler called when the "Quit" button is clicked.
 
-            // Quitter l'application
+            // Exit the application
             Application.Exit();
         }
 
+        // Event handler for the closing of the MainMenu_Frm form
         private void MainMenu_Frm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Gestionnaire d'événements appelé lorsque le formulaire MainMenu_Frm est en cours de fermeture.
+            // Event handler called when the MainMenu_Frm form is closing.
 
-            // Par défaut, Application.Exit() fermera l'ensemble de l'application
+            // By default, Application.Exit() will close the entire application
             Application.Exit();
         }
 
+        // Event handler for the "Play" button click
         private void Play_Button_Click(object sender, EventArgs e)
         {
-            // Gestionnaire d'événements appelé lorsque le bouton "Play" est cliqué.
+            // Event handler called when the "Play" button is clicked.
 
-            // Créer une nouvelle instance du formulaire Game_Frm
+            // Create a new instance of the Game_Frm form
             Game_Frm game = new Game_Frm();
 
-            // Afficher le formulaire Game_Frm
+            // Show the Game_Frm form
             game.Show();
 
-            // Masquer le formulaire MainMenu_Frm actuel
+            // Hide the current MainMenu_Frm form
             this.Hide();
         }
     }
