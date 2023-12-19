@@ -40,6 +40,7 @@
             chat_lst = new ListBox();
             sizeIncrease_btn = new Button();
             sizeDecrease_btn = new Button();
+            download_btn = new Button();
             ((System.ComponentModel.ISupportInitialize)logo_ptr).BeginInit();
             ((System.ComponentModel.ISupportInitialize)drawing_ptr).BeginInit();
             SuspendLayout();
@@ -153,12 +154,24 @@
             sizeDecrease_btn.UseVisualStyleBackColor = true;
             sizeDecrease_btn.Click += sizeDecrease_btn_Click;
             // 
+            // download_btn
+            // 
+            download_btn.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            download_btn.Location = new Point(1486, 931);
+            download_btn.Name = "download_btn";
+            download_btn.Size = new Size(160, 76);
+            download_btn.TabIndex = 19;
+            download_btn.Text = "Download";
+            download_btn.UseVisualStyleBackColor = true;
+            download_btn.Click += download_btn_Click;
+            // 
             // Game_Frm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1904, 1041);
+            Controls.Add(download_btn);
             Controls.Add(sizeDecrease_btn);
             Controls.Add(sizeIncrease_btn);
             Controls.Add(chat_lst);
@@ -193,5 +206,6 @@
         private ListBox chat_lst;
         private Button sizeIncrease_btn;
         private Button sizeDecrease_btn;
+        private Button download_btn;
     }
 }
