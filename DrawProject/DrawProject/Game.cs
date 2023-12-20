@@ -23,10 +23,81 @@ namespace DrawProject
         private Color previousColor = Color.Black;
         private bool isEraserMode = false;
         private float lineSize = 2.0f; // Default line size
+        private string currentWord;
+        private HashSet<char> guessedLetters = new HashSet<char>();
+
+        private List<string> wordsToDraw = new List<string>
+{
+    "apple",
+    "banana",
+    "cat",
+    "dog",
+    "duck",
+    "house"
+};
+        private void GetRandomWord()
+        {
+            Random random = new Random();
+            int index = random.Next(wordsToDraw.Count);
+            currentWord = wordsToDraw[index];
+        }
+
+
+        private void DisplayRandomWord()
+        {
+            GetRandomWord();
+
+            // Convert the word to puzzle format (e.g., "_ _ _ _")
+            string puzzleFormat = string.Join(" ", currentWord.Select(c => "_"));
+
+            wordToDraw_lbl.Text = $"Draw: {puzzleFormat}";
+        }
+        private void DisplayGuessedWord()
+        {
+            // Initialize a StringBuilder to build the displayed word
+            StringBuilder displayWord = new StringBuilder();
+
+            // Iterate through each character in the current word
+            for (int i = 0; i < currentWord.Length; i++)
+            {
+                char currentChar = currentWord[i];
+
+                // Check if the letter has been guessed
+                if (guessedLetters.Contains(currentChar))
+                {
+                    // Guessed letter, append it to the display word
+                    displayWord.Append(currentChar);
+                }
+                else
+                {
+                    // Letter not guessed, append an underscore
+                    displayWord.Append("_");
+                }
+
+                // Append a space after each character except the last one
+                if (i < currentWord.Length - 1)
+                {
+                    displayWord.Append(" ");
+                }
+            }
+
+            // Update the label with the constructed display word
+            wordToDraw_lbl.Text = $"Draw: {displayWord.ToString()}";
+
+            // Check if the guessed word matches the current word
+            if (displayWord.ToString().Replace(" ", "") == currentWord)
+            {
+                // Word is found, display a congratulatory message in the chat
+                AddMessage("System", $"Congratulations! You found the word '{currentWord}'!");
+            }
+        }
+
 
         public Game_Frm()
         {
             InitializeComponent();
+            DisplayRandomWord();
+            DisplayGuessedWord();
         }
 
         // Method to change the color of the drawing line
@@ -162,14 +233,49 @@ namespace DrawProject
         }
 
         // Event handler for key press in the text box
+        // Event handler for key press in the text box
         private void send_txt_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
+                // Get the guessed text
+                string guessedText = send_txt.Text.Trim().ToLower();
+
+                if (!string.IsNullOrWhiteSpace(guessedText))
+                {
+                    // Check if the guessed text matches the current word
+                    if (guessedText == currentWord)
+                    {
+                        // Reveal all letters in the hidden word
+                        guessedLetters = new HashSet<char>(currentWord.ToLower());
+
+                        // Update the displayed word
+                        DisplayGuessedWord();
+                    }
+                    else
+                    {
+                        // Check for correct letters in the guessed word
+                        foreach (char guessedLetter in guessedText)
+                        {
+                            if (currentWord.ToLower().Contains(guessedLetter) && !guessedLetters.Contains(guessedLetter))
+                            {
+                                guessedLetters.Add(guessedLetter);
+                            }
+                        }
+
+                        // Update the displayed word
+                        DisplayGuessedWord();
+                    }
+
+                    // Clear the text after guessing
+                    send_txt.Clear();
+                }
+
                 // Prevent newline by consuming the event
                 e.Handled = true;
             }
         }
+
 
         // Event handler for increasing the line size
         private void sizeIncrease_btn_Click(object sender, EventArgs e)
@@ -203,7 +309,7 @@ namespace DrawProject
             else
             {
                 // Display a warning if there is no drawing to save
-                MessageBox.Show("Aucun dessin à sauvegarder.", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No drawing to save", "Waring !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -211,6 +317,11 @@ namespace DrawProject
         private void Game_Frm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void logo_ptr_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

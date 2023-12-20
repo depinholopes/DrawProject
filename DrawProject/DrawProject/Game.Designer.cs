@@ -41,6 +41,8 @@
             sizeIncrease_btn = new Button();
             sizeDecrease_btn = new Button();
             download_btn = new Button();
+            Advertissement_txt = new TextBox();
+            wordToDraw_lbl = new Label();
             ((System.ComponentModel.ISupportInitialize)logo_ptr).BeginInit();
             ((System.ComponentModel.ISupportInitialize)drawing_ptr).BeginInit();
             SuspendLayout();
@@ -165,12 +167,36 @@
             download_btn.UseVisualStyleBackColor = true;
             download_btn.Click += download_btn_Click;
             // 
+            // Advertissement_txt
+            // 
+            Advertissement_txt.BackColor = Color.White;
+            Advertissement_txt.BorderStyle = BorderStyle.None;
+            Advertissement_txt.Location = new Point(1486, 865);
+            Advertissement_txt.Multiline = true;
+            Advertissement_txt.Name = "Advertissement_txt";
+            Advertissement_txt.ReadOnly = true;
+            Advertissement_txt.Size = new Size(160, 60);
+            Advertissement_txt.TabIndex = 20;
+            Advertissement_txt.Text = "⚠️ Background is invisible, so it will download only the lines you had drawn.";
+            // 
+            // wordToDraw_lbl
+            // 
+            wordToDraw_lbl.AutoSize = true;
+            wordToDraw_lbl.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            wordToDraw_lbl.Location = new Point(378, 234);
+            wordToDraw_lbl.Name = "wordToDraw_lbl";
+            wordToDraw_lbl.Size = new Size(78, 32);
+            wordToDraw_lbl.TabIndex = 21;
+            wordToDraw_lbl.Text = "label1";
+            // 
             // Game_Frm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1904, 1041);
+            Controls.Add(wordToDraw_lbl);
+            Controls.Add(Advertissement_txt);
             Controls.Add(download_btn);
             Controls.Add(sizeDecrease_btn);
             Controls.Add(sizeIncrease_btn);
@@ -182,7 +208,7 @@
             Controls.Add(selectColor_btn);
             Controls.Add(drawing_ptr);
             Controls.Add(logo_ptr);
-            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "Game_Frm";
             Text = "Game";
             WindowState = FormWindowState.Maximized;
@@ -207,5 +233,7 @@
         private Button sizeIncrease_btn;
         private Button sizeDecrease_btn;
         private Button download_btn;
+        private TextBox Advertissement_txt;
+        private Label wordToDraw_lbl;
     }
 }
