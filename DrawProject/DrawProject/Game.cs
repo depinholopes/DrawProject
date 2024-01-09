@@ -106,7 +106,6 @@ namespace DrawProject
             InitializeComponent();
             this.accessCode = accessCode;
             this.gameNumber = gameNumber;
-            ConnectToLocalServerAsync();
             DisplayRandomWord();
             DisplayGuessedWord();
             graphics = drawing_ptr.CreateGraphics();
@@ -221,9 +220,6 @@ namespace DrawProject
 
             // Toggle between normal mode and eraser mode
             isEraserMode = !isEraserMode;
-
-            // You can also change the visual appearance of the button to indicate whether eraser mode is on or off
-            // For example, change the color of the button or add indicative text
 
             // Call Invalidate to update the drawing area
             drawing_ptr.Invalidate();
