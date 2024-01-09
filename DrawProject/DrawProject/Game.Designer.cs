@@ -43,6 +43,7 @@
             download_btn = new Button();
             Advertissement_txt = new TextBox();
             wordToDraw_lbl = new Label();
+            gameCode_lbl = new Label();
             ((System.ComponentModel.ISupportInitialize)logo_ptr).BeginInit();
             ((System.ComponentModel.ISupportInitialize)drawing_ptr).BeginInit();
             SuspendLayout();
@@ -189,12 +190,23 @@
             wordToDraw_lbl.TabIndex = 21;
             wordToDraw_lbl.Text = "label1";
             // 
+            // gameCode_lbl
+            // 
+            gameCode_lbl.AutoSize = true;
+            gameCode_lbl.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            gameCode_lbl.Location = new Point(12, 12);
+            gameCode_lbl.Name = "gameCode_lbl";
+            gameCode_lbl.Size = new Size(78, 32);
+            gameCode_lbl.TabIndex = 22;
+            gameCode_lbl.Text = "label1";
+            // 
             // Game_Frm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1904, 1041);
+            Controls.Add(gameCode_lbl);
             Controls.Add(wordToDraw_lbl);
             Controls.Add(Advertissement_txt);
             Controls.Add(download_btn);
@@ -235,5 +247,6 @@
         private Button download_btn;
         private TextBox Advertissement_txt;
         private Label wordToDraw_lbl;
+        private Label gameCode_lbl;
     }
 }

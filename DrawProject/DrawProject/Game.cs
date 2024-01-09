@@ -6,9 +6,11 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace DrawProject
 {
@@ -25,16 +27,22 @@ namespace DrawProject
         private float lineSize = 2.0f; // Default line size
         private string currentWord;
         private HashSet<char> guessedLetters = new HashSet<char>();
-
         private List<string> wordsToDraw = new List<string>
-{
-    "apple",
-    "banana",
-    "cat",
-    "dog",
-    "duck",
-    "house"
-};
+        {
+            "apple",
+            "banana",
+            "cat",
+            "dog",
+            "duck",
+            "house"
+        };
+        private TcpClient tcpClient;
+        private NetworkStream stream;
+        private StreamReader reader;
+        private StreamWriter writer;
+        private Graphics graphics;
+        private int gameNumber;
+        private string accessCode;
         private void GetRandomWord()
         {
             Random random = new Random();
@@ -93,11 +101,20 @@ namespace DrawProject
         }
 
 
-        public Game_Frm()
+        public Game_Frm(string accessCode, int gameNumber)
         {
             InitializeComponent();
+            this.accessCode = accessCode;
+            this.gameNumber = gameNumber;
+            ConnectToLocalServerAsync();
             DisplayRandomWord();
             DisplayGuessedWord();
+            graphics = drawing_ptr.CreateGraphics();
+            gameCode_lbl.Text = $"Code de la partie : {accessCode}";
+        }
+
+        public Game_Frm()
+        {
         }
 
         // Method to change the color of the drawing line
@@ -313,15 +330,102 @@ namespace DrawProject
             }
         }
 
+        private async Task ConnectToLocalServerAsync()
+        {
+            try
+            {
+                if (!CheckAccessCode())
+                {
+                    MessageBox.Show("Code d'accès incorrect.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                    return;
+                }
+
+                tcpClient = new TcpClient();
+                await tcpClient.ConnectAsync("127.0.0.1", 12345);
+                stream = tcpClient.GetStream();
+                reader = new StreamReader(stream);
+                writer = new StreamWriter(stream) { AutoFlush = true };
+
+                Task.Run(() => ReceiveUpdatesFromServer());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur de connexion au serveur : {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
+        }
+
+        private async Task ReceiveUpdatesFromServer()
+        {
+            try
+            {
+                while (true)
+                {
+                    string data = await reader.ReadLineAsync();
+
+                    if (data != null)
+                    {
+                        // Process updates received from the server
+                        ProcessServerUpdate(data);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error communicating with the server: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async Task SendDrawingUpdateToServer(Point startPoint, Point endPoint)
+        {
+            // Send drawing coordinates to the server
+            await writer.WriteLineAsync($"DRAW|{startPoint.X},{startPoint.Y},{endPoint.X},{endPoint.Y}");
+        }
+
+        private void ProcessServerUpdate(string update)
+        {
+            // Split the update string to get the necessary information
+            string[] parts = update.Split('|');
+
+            if (parts.Length == 2 && parts[0] == "DRAW")
+            {
+                string[] coordinates = parts[1].Split(',');
+
+                if (coordinates.Length == 4)
+                {
+                    // Get the drawing coordinates
+                    int startX = int.Parse(coordinates[0]);
+                    int startY = int.Parse(coordinates[1]);
+                    int endX = int.Parse(coordinates[2]);
+                    int endY = int.Parse(coordinates[3]);
+
+                    // Draw on the form using these coordinates
+                    using (Pen pen = new Pen(currentColor, lineSize))
+                    {
+                        graphics.DrawLine(pen, startX, startY, endX, endY);
+                    }
+                }
+            }
+        }
+        private bool CheckAccessCode()
+        {
+            // Affichez un formulaire ou une boîte de dialogue pour saisir le code de connexion
+            AccessCodeForm accessCodeForm = new AccessCodeForm();
+            DialogResult result = accessCodeForm.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                // Vérifiez si le code entré correspond au code attendu
+                return accessCodeForm.EnteredCode == accessCode;
+            }
+
+            return false;
+        }
         // Event handler for form closing
         private void Game_Frm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
-        }
-
-        private void logo_ptr_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
