@@ -26,9 +26,9 @@ DrawProject is a simple drawing and multiplayer guessing game built in C# with W
 			 windows\DrawProject.exe'
  5. Play the game with your friends and have some fun.
  
- ```diff
- - /!\ Warning /!\
- ```
+ ```html
+   <span style="color: red"> /!\ WARNING /!\ </span>
+```
  For the moment, only the release 0.1 works and is playable.
  To play it, go to https://github.com/depinholopes/DrawProject/releases/tag/Release and follow the lines written in.
  The multiplayer mode is not implemented, so it's not possible to play the full content of the game.
