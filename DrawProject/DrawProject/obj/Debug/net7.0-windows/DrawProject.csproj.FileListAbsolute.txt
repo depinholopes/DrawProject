@@ -17,3 +17,4 @@ C:\Users\px07ycv\Documents\GitHub\DrawProject\DrawProject\DrawProject\obj\Debug\
 C:\Users\px07ycv\Documents\GitHub\DrawProject\DrawProject\DrawProject\obj\Debug\net7.0-windows\DrawProject.HowToPlay_Frm.resources
 C:\Users\px07ycv\Documents\GitHub\DrawProject\DrawProject\DrawProject\obj\Debug\net7.0-windows\DrawProject.MainMenu_Frm.resources
 C:\Users\px07ycv\Documents\GitHub\DrawProject\DrawProject\DrawProject\obj\Debug\net7.0-windows\DrawProject.Game_Frm.resources
+C:\Users\px07ycv\Documents\GitHub\DrawProject\DrawProject\DrawProject\obj\Debug\net7.0-windows\DrawProject.JoinGameForm.resources

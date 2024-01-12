@@ -33,6 +33,8 @@
             HowToPlay_Button = new Button();
             Quit_Button = new Button();
             pictureBox1 = new PictureBox();
+            CreateGame_btn = new Button();
+            JoinGame_btn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -75,12 +77,34 @@
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
+            // CreateGame_btn
+            // 
+            CreateGame_btn.Location = new Point(1058, 325);
+            CreateGame_btn.Name = "CreateGame_btn";
+            CreateGame_btn.Size = new Size(180, 71);
+            CreateGame_btn.TabIndex = 4;
+            CreateGame_btn.Text = "Create Game";
+            CreateGame_btn.UseVisualStyleBackColor = true;
+            CreateGame_btn.Click += CreateGame_btn_Click;
+            // 
+            // JoinGame_btn
+            // 
+            JoinGame_btn.Location = new Point(1058, 402);
+            JoinGame_btn.Name = "JoinGame_btn";
+            JoinGame_btn.Size = new Size(180, 71);
+            JoinGame_btn.TabIndex = 5;
+            JoinGame_btn.Text = "Join Game";
+            JoinGame_btn.UseVisualStyleBackColor = true;
+            JoinGame_btn.Click += JoinGame_btn_Click;
+            // 
             // MainMenu_Frm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1904, 1041);
+            Controls.Add(JoinGame_btn);
+            Controls.Add(CreateGame_btn);
             Controls.Add(pictureBox1);
             Controls.Add(Quit_Button);
             Controls.Add(HowToPlay_Button);
@@ -100,5 +124,7 @@
         private Button HowToPlay_Button;
         private Button Quit_Button;
         private PictureBox pictureBox1;
+        private Button CreateGame_btn;
+        private Button JoinGame_btn;
     }
 }
